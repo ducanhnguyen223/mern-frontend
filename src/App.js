@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -6,21 +6,19 @@ function App() {
   // Trigger CD pipeline
   const [message, setMessage] = useState('');
 
+  useEffect(() => {
+    fetch('http://localhost:5000/') // Replace with your Render backend URL later
+      .then(res => res.text())
+      .then(data => setMessage(data))
+      .catch(err => console.error("Error fetching backend:", err));
+  }, []);
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <p>Frontend says: Hello from React!</p>
+        <p>Backend says: {message}</p>
       </header>
     </div>
   );
