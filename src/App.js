@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Frontend says: Hello from React!</p>
+        <p>Deployment test: Vercel should show this new message.</p>
         <p>Backend says: {message}</p>
       </header>
     </div>
